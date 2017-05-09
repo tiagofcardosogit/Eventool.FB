@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1031711010067",
+    "firebase_url": "https://eventool-4a04e.firebaseio.com",
+    "project_id": "eventool-4a04e",
+    "storage_bucket": "eventool-4a04e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031711010067:android:fe76857183a33070",
+        "android_client_info": {
+          "package_name": "com.example.tiagocardoso.eventool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031711010067-4dcitausofoo1bv9qmk05c3uuadtm6b8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tiagocardoso.eventool",
+            "certificate_hash": "01bbbaa8235348d3c155e1fb238b1389e7723baa"
+          }
+        },
+        {
+          "client_id": "1031711010067-8khc3tb084k03enep71v48eo77sgkma4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0m9e3DtghYGZdd87uUVt6aKZ2fUcoq60"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031711010067-8khc3tb084k03enep71v48eo77sgkma4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
