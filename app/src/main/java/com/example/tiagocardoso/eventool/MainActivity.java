@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,7 @@ import com.facebook.login.widget.LoginButton;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private Button btnLogarManual;
     private Button btnCadastrar;
 
@@ -49,7 +50,7 @@ public class MainActivity extends Activity {
         btnLogarManual.setOnClickListener(new View.OnClickListener() { //logar manualmente com email e senha
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Listar_EventoActivity.class);
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
         });
