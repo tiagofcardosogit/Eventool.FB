@@ -1,4 +1,4 @@
-package com.example.tiagocardoso.eventool.Helper;
+package com.example.tiagocardoso.eventool.model;
 
 
 /**

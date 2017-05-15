@@ -1,32 +1,35 @@
-package com.example.tiagocardoso.eventool.Helper;
+package com.example.tiagocardoso.eventool.model;
 
 /**
  * Created by tiagocardoso on 09/04/17.
  */
 public class Usuario {
-    private long ID;
+    private String id;
     private String nome;
     private String sobrenome;
     private String email;
-    private int telefone;
+    private String senha;
+    private String telefone;
 
     public Usuario() {
     }
 
-    public Usuario(long ID, String nome, String sobrenome, String email, int telefone) {
-        this.ID = ID;
+    public Usuario(String id, String nome, String sobrenome, String email, String senha, String telefone) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.telefone = telefone;
         this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
     }
 
-    public long getID() {
-        return ID;
+
+    public String getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -53,14 +56,19 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone() {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-
-
 }

@@ -15,7 +15,7 @@ import android.support.design.widget.Snackbar;
 
 import com.example.tiagocardoso.eventool.Helper.Util;
 import com.example.tiagocardoso.eventool.R;
-import com.example.tiagocardoso.eventool.Helper.Usuario;
+import com.example.tiagocardoso.eventool.model.Usuario;
 import com.example.tiagocardoso.eventool.Helper.UsuarioAdapter;
 
 import java.net.HttpURLConnection;

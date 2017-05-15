@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.tiagocardoso.eventool.R;
+import com.example.tiagocardoso.eventool.model.Usuario;
 
 import java.util.List;
 

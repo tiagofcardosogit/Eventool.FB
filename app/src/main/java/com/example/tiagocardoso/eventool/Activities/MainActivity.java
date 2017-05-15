@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 
+import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
 import com.example.tiagocardoso.eventool.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -20,6 +21,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.firebase.database.DatabaseReference;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -31,13 +33,16 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager;//responsavel pela validacao do usuario e resposta da operaçao
     private LoginButton loginButton;// botao do login facebook
 
-
+    private DatabaseReference referenciaFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());//tudo que é associado ao facebook é carregado nesse momento, feito antes do setcontentview
         setContentView(R.layout.activity_main_login_fb);
+
+        referenciaFirebase = ConfigFirebase.getFirebase();
+        referenciaFirebase.child("Pontos").setValue("900");
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         callbackManager = CallbackManager.Factory.create(); //faz com que o callback crie a manipulacao tudo automatico

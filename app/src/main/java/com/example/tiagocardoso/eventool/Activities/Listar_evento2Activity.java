@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.tiagocardoso.eventool.Helper.Evento;
+import com.example.tiagocardoso.eventool.model.Evento;
 import com.example.tiagocardoso.eventool.Helper.EventoAdapter;
 import com.example.tiagocardoso.eventool.Helper.Util;
 import com.example.tiagocardoso.eventool.R;

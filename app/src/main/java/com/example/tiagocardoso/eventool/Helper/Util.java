@@ -1,5 +1,8 @@
 package com.example.tiagocardoso.eventool.Helper;
 
+import com.example.tiagocardoso.eventool.model.Evento;
+import com.example.tiagocardoso.eventool.model.Usuario;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,7 +61,7 @@ public class Util {
                 novoUsuario.setNome(nome);
                 novoUsuario.setSobrenome(sobrenome);
                 novoUsuario.setEmail(email);
-                novoUsuario.setTelefone();
+                //novoUsuario.setTelefone();
                 usuarios.add(novoUsuario);
             }
 

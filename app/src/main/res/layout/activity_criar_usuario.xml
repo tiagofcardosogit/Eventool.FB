@@ -14,11 +14,11 @@
         android:id="@+id/usuarioNameID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="38dp"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/cadastreseID"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -36,23 +36,23 @@
         android:id="@+id/emailID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/usuarioSobrenomeID"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="exemple@exemple.com"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/usuarioSobrenomeID"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/senhaID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/emailID"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Senha"
-        android:inputType="numberPassword" />
+        android:inputType="numberPassword"
+        android:layout_below="@+id/emailID"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/cadastreseID"
@@ -70,9 +70,9 @@
         android:id="@+id/btnSalvarID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Salvar"
         android:layout_below="@+id/senhaID"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        android:text="Salvar" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
