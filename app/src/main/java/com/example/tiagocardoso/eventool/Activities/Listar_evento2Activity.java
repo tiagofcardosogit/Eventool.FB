@@ -1,13 +1,16 @@
-package com.example.tiagocardoso.eventool;
+package com.example.tiagocardoso.eventool.Activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListViewCompat;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.tiagocardoso.eventool.Helper.Evento;
+import com.example.tiagocardoso.eventool.Helper.EventoAdapter;
+import com.example.tiagocardoso.eventool.Helper.Util;
+import com.example.tiagocardoso.eventool.R;
 
 import java.net.HttpURLConnection;
 import java.net.URL;

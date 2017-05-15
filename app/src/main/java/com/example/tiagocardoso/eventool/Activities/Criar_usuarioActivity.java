@@ -1,10 +1,11 @@
-package com.example.tiagocardoso.eventool;
+package com.example.tiagocardoso.eventool.Activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.tiagocardoso.eventool.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tiagocardoso.eventool.Listar_EventoActivity">
+    tools:context="com.example.tiagocardoso.eventool.Activities.Listar_EventoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="389dp"

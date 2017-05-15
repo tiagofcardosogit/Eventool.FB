@@ -1,4 +1,4 @@
-package com.example.tiagocardoso.eventool;
+package com.example.tiagocardoso.eventool.Helper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,20 +11,6 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class Util {

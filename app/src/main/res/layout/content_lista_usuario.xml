@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.tiagocardoso.eventool.Listar_usuarioActivity"
+    tools:context="com.example.tiagocardoso.eventool.Activities.Listar_usuarioActivity"
     tools:showIn="@layout/activity_lista_usuario">
 
     <ListView

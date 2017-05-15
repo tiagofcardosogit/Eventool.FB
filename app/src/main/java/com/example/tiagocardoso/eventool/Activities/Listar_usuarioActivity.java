@@ -1,6 +1,5 @@
-package com.example.tiagocardoso.eventool;
+package com.example.tiagocardoso.eventool.Activities;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,34 +9,30 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.design.widget.*;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 
+
+import com.example.tiagocardoso.eventool.Helper.Util;
+import com.example.tiagocardoso.eventool.R;
+import com.example.tiagocardoso.eventool.Helper.Usuario;
+import com.example.tiagocardoso.eventool.Helper.UsuarioAdapter;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.List;
 
-public class Listar_EventoActivity extends AppCompatActivity {
+public class Listar_usuarioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_evento2);
+        setContentView(R.layout.activity_lista_usuario);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarEvt);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-/*        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.actionBtn);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.actionBtn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,12 +41,12 @@ public class Listar_EventoActivity extends AppCompatActivity {
 
 
             }
-        });*/
+        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        loadEventos();
+        loadUsuarios();
     }
 
-    public void loadEventos() {
+    public void loadUsuarios(){
         new DownloadFromMyAPI().execute();
     }
 
@@ -61,7 +56,7 @@ public class Listar_EventoActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             HttpURLConnection urlConnection = null;
             try {
-                URL url = new URL("http://eventool.esy.es/selectEvento.php");
+                URL url = new URL("http://eventool.esy.es/selectAll.php");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setReadTimeout(10000);
                 urlConnection.setConnectTimeout(15000);
@@ -80,7 +75,7 @@ public class Listar_EventoActivity extends AppCompatActivity {
             } catch (Exception e) {
                 Log.e("Error", "Error ", e);
                 return null;
-            } finally {
+            } finally{
                 if (urlConnection != null) {
                     urlConnection.disconnect();
                 }
@@ -90,13 +85,14 @@ public class Listar_EventoActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            List<Evento> eventos = Util.convertJSONtoEvento(s);
-            if (eventos != null) {
-                ArrayAdapter<Evento> eventoAdapter = new EventoAdapter(Listar_EventoActivity.this, R.layout.evento_item, eventos);
-                ListView listaEvento = (ListView) findViewById(R.id.listEventos);
-                listaEvento.setAdapter(eventoAdapter);
+            List<Usuario> usuarios = Util.convertJSONtoUsuario(s);
+            if(usuarios != null){
+                ArrayAdapter<Usuario> usuarioAdapter = new UsuarioAdapter(Listar_usuarioActivity.this,R.layout.usuario_item,usuarios);
+                ListView listaUsuario = (ListView) findViewById(R.id.listUsuarios);
+                listaUsuario.setAdapter(usuarioAdapter);
             }
         }
     }
 
 }
+

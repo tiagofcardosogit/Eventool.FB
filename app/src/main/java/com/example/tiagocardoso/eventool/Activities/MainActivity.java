@@ -1,6 +1,5 @@
-package com.example.tiagocardoso.eventool;
+package com.example.tiagocardoso.eventool.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 
+import com.example.tiagocardoso.eventool.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;

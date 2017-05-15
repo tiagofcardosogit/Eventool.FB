@@ -2,13 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.tiagocardoso.eventool.LoginActivity">
+    tools:context="com.example.tiagocardoso.eventool.Activities.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -22,7 +23,7 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="237dp">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -50,10 +51,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/passwordID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
+                    android:hint="Senha"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -70,8 +71,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/cadastroUsuarioID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="abrirCriarUsuario"
+        android:text="Nao tem conta? Cadastre-se"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
 </LinearLayout>
