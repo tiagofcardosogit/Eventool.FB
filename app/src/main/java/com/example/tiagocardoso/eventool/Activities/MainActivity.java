@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());//tudo que é associado ao facebook é carregado nesse momento, feito antes do setcontentview
         setContentView(R.layout.activity_main_login_fb);
 
-        referenciaFirebase = ConfigFirebase.getFirebase();
-        referenciaFirebase.child("Pontos").setValue("900");
+/*        referenciaFirebase = ConfigFirebase.getFirebase();
+        referenciaFirebase.child("Pontos").setValue("900");*/
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         callbackManager = CallbackManager.Factory.create(); //faz com que o callback crie a manipulacao tudo automatico

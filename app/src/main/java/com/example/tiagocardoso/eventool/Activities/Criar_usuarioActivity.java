@@ -1,5 +1,6 @@
 package com.example.tiagocardoso.eventool.Activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.example.tiagocardoso.eventool.model.Usuario;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Criar_usuarioActivity extends AppCompatActivity {
 
@@ -81,9 +83,19 @@ public class Criar_usuarioActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(Criar_usuarioActivity.this, "Cadastro Realizado com Sucesso!!", Toast.LENGTH_SHORT).show();
+
+
+                    FirebaseUser usuarioFirebase = task.getResult().getUser();
+                    usuario.setId(usuarioFirebase.getUid());
+                    usuario.salvar();
+
+                    Intent intent = new Intent(Criar_usuarioActivity.this, NavigationLayout.class);
+                    startActivity(intent);
+
                 }else{
                     Toast.makeText(Criar_usuarioActivity.this, "Falha ao Cadastrar!! Tente Novamente", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 

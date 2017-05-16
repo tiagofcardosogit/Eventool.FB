@@ -11,8 +11,9 @@
         android:id="@+id/login_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:background="@color/colorPrimary" />
 
     <Button
         android:id="@+id/btnTelaLogarID"
@@ -21,9 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnCadastroID"
         android:layout_alignEnd="@+id/evImageID"
+        android:layout_alignStart="@+id/evImageID"
         android:text="Entrar"
-        android:textStyle="italic"
-        android:layout_alignStart="@+id/evImageID" />
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic" />
 
     <ImageView
         android:id="@+id/evImageID"
@@ -47,6 +49,7 @@
 
     <Button
         android:id="@+id/btnCadastroID"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/btnTelaLogarID"
@@ -54,7 +57,8 @@
         android:layout_alignStart="@+id/btnTelaLogarID"
         android:layout_marginBottom="31dp"
         android:background="@android:color/background_light"
-        android:text="Cadastrar-se" />
+        android:text="Cadastrar-se"
+        android:textColor="@android:color/background_light" />
 
 
 </RelativeLayout>

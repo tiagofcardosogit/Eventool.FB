@@ -1,5 +1,8 @@
 package com.example.tiagocardoso.eventool.model;
 
+import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
+import com.google.firebase.database.DatabaseReference;
+
 /**
  * Created by tiagocardoso on 09/04/17.
  */
@@ -12,6 +15,11 @@ public class Usuario {
     private String telefone;
 
     public Usuario() {
+    }
+
+    public void salvar(){
+        DatabaseReference  referenciaFirebase = ConfigFirebase.getFirebase();
+        referenciaFirebase.child("usuarios").child(getId()).setValue(this);
     }
 
     public Usuario(String id, String nome, String sobrenome, String email, String senha, String telefone) {
