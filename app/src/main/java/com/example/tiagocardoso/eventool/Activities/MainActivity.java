@@ -1,15 +1,19 @@
 package com.example.tiagocardoso.eventool.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
@@ -34,12 +38,24 @@ public class MainActivity extends AppCompatActivity {
     private LoginButton loginButton;// botao do login facebook
 
     private DatabaseReference referenciaFirebase;
+    boolean isConnected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());//tudo que é associado ao facebook é carregado nesse momento, feito antes do setcontentview
         setContentView(R.layout.activity_main_login_fb);
+
+        ConnectivityManager conectivityManager = (ConnectivityManager) MainActivity.this.getApplicationContext().getSystemService(
+                Context.CONNECTIVITY_SERVICE
+        );
+
+        NetworkInfo networkInfo = conectivityManager.getActiveNetworkInfo();
+        isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+        if (!isConnected){
+
+            Toast.makeText(MainActivity.this, "Conecte-se a Internet", Toast.LENGTH_LONG).show();
+        }
 
 /*        referenciaFirebase = ConfigFirebase.getFirebase();
         referenciaFirebase.child("Pontos").setValue("900");*/
@@ -87,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {  //verifica qual é o status do usuario no momento da conexao
+
+
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.i("ID_FB",loginResult.getAccessToken().getUserId());
