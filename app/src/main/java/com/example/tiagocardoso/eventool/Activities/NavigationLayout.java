@@ -1,5 +1,6 @@
 package com.example.tiagocardoso.eventool.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,10 +14,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
 import com.example.tiagocardoso.eventool.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class NavigationLayout extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private FirebaseAuth autenticacao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +50,11 @@ public class NavigationLayout extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -58,7 +68,7 @@ public class NavigationLayout extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; metodo usado para inflar/adicionar os menus de opcoes na toolbar. Parte de cima do layout
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -68,14 +78,25 @@ public class NavigationLayout extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            case R.id.action_sair:
+                delogarUsuario();
+                return true;
+            case R.id.Pesquisar:
+                return true;
+            default:
+            return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    public void delogarUsuario(){
+        autenticacao = ConfigFirebase.getFirebaseAutenticacao();
+        autenticacao.signOut();
+        Intent intent = new Intent(NavigationLayout.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
