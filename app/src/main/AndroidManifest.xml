@@ -58,7 +58,8 @@
         <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Activities.NavigationLayout2"></activity>
+        <activity android:name=".Activities.NavigationLayout2" />
+        <activity android:name=".Activities.CriarEventoActivity"></activity>
     </application>
 
 </manifest>
