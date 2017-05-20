@@ -7,19 +7,13 @@ package com.example.tiagocardoso.eventool.model;
 
 public class Evento {
 
-    private long id_evento;
-    private long id_usuario;
-    private String nome;
-    private String descricao;
-    private String dataevento;
-    private String horarioevento;
+    private String id;
+    private String id_usuario;
+    private String nomeEvento;
+    private String detalhesEvento;
+    private String dataEvento;
+    private String horaEvento;
     private String nomelocal;
-    private String logradouro;
-    private int numero;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String pais;
     private boolean ativo;
 
     public Evento(){
@@ -27,63 +21,63 @@ public class Evento {
     }
 
 
-    public Evento(long ID, String nome, String descricao, String nomelocal, String dataevento, String horarioevento, String cidade, String estado) {
-        this.id_evento = ID;
-        this.nome = nome;
-        this.descricao = descricao;
+    public Evento(String id, String nomeEvento, String detalhesEvento, String nomelocal, String dataEvento, String horarioevento, String horaEvento) {
+        this.id = id;
+        this.nomeEvento = nomeEvento;
+        this.detalhesEvento = detalhesEvento;
         this.nomelocal = nomelocal;
-        this.dataevento = dataevento;
-        this.horarioevento= horarioevento;
-        this.cidade = cidade;
-        this.estado = estado;
+        this.dataEvento = dataEvento;
+        this.horaEvento= horaEvento;
+
     }
 
-    public long getId_evento() {
-        return id_evento;
+
+    public String getId() {
+        return id;
     }
 
-    public void setId_evento(long id_evento) {
-        this.id_evento = id_evento;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public long getId_usuario() {
+    public String getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(long id_usuario) {
+    public void setId_usuario(String id_usuario) {
         this.id_usuario = id_usuario;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeEvento() {
+        return nomeEvento;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeEvento(String nomeEvento) {
+        this.nomeEvento = nomeEvento;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDetalhesEvento() {
+        return detalhesEvento;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDetalhesEvento(String detalhesEvento) {
+        this.detalhesEvento = detalhesEvento;
     }
 
-    public String getDataevento() {
-        return dataevento;
+    public String getDataEvento() {
+        return dataEvento;
     }
 
-    public void setDataevento(String dataevento) {
-        this.dataevento = dataevento;
+    public void setDataEvento(String dataEvento) {
+        this.dataEvento = dataEvento;
     }
 
-    public String getHorarioevento() {
-        return horarioevento;
+    public String getHoraEvento() {
+        return horaEvento;
     }
 
-    public void setHorarioevento(String horarioevento) {
-        this.horarioevento = horarioevento;
+    public void setHoraEvento(String horaEvento) {
+        this.horaEvento = horaEvento;
     }
 
     public String getNomelocal() {
@@ -94,54 +88,6 @@ public class Evento {
         this.nomelocal = nomelocal;
     }
 
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
     public boolean isAtivo() {
         return ativo;
     }
@@ -150,3 +96,5 @@ public class Evento {
         this.ativo = ativo;
     }
 }
+
+

@@ -51,16 +51,16 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
                 eventoID.setText(String.valueOf(evento.getId_evento()));
             }*/
             if(noveEvento != null){
-                noveEvento.setText(evento.getNome());
+                noveEvento.setText(evento.getNomeEvento());
             }
             if(descricaoEvento != null){
-                descricaoEvento.setText(evento.getDescricao());
+                descricaoEvento.setText(evento.getDetalhesEvento());
             }
             if (localEvento != null){
                 localEvento.setText(evento.getNomelocal());
             }
             if(dataEvento != null){
-                dataEvento.setText(String.valueOf(evento.getDataevento()));
+                dataEvento.setText(String.valueOf(evento.getDataEvento()));
             }
             /*if(horaEvento != null){
                 horaEvento.setText(String.valueOf(evento.getHorarioevento()));
