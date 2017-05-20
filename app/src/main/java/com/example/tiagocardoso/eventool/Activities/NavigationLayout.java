@@ -88,6 +88,9 @@ public class NavigationLayout extends AppCompatActivity
                 return true;
             case R.id.Pesquisar:
                 return true;
+            case R.id.maps:
+                Intent intent = new Intent(NavigationLayout.this, MapsActivity.class);
+                startActivity(intent);
             default:
             return super.onOptionsItemSelected(item);
         }
