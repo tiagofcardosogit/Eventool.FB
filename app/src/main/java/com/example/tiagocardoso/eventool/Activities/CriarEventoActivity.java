@@ -1,6 +1,8 @@
 package com.example.tiagocardoso.eventool.Activities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +14,15 @@ import android.widget.Toast;
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
 import com.example.tiagocardoso.eventool.R;
 import com.example.tiagocardoso.eventool.model.Evento;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class CriarEventoActivity extends AppCompatActivity {
+public class CriarEventoActivity extends AppCompatActivity{
 
     private Button btn_criarEvento;
     private TextView nomeEvento;
@@ -28,10 +33,8 @@ public class CriarEventoActivity extends AppCompatActivity {
     private Boolean isSuccessful;
 
 
+
     private DatabaseReference databaseReference = ConfigFirebase.getFirebase();
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class CriarEventoActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     private void criarEvento(){
@@ -72,4 +76,5 @@ public class CriarEventoActivity extends AppCompatActivity {
         finish();
 
     }
+
 }
