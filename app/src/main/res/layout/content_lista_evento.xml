@@ -12,7 +12,8 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.tiagocardoso.eventool.Activities.Listar_EventoActivity"
-    tools:showIn="@layout/activity_listar_evento">
+    tools:showIn="@layout/content_main"
+    android:weightSum="1">
 
     <ListView
         android:id="@+id/listEventos"
@@ -20,7 +21,8 @@
         android:layout_height="229dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="75dp">
+        android:layout_marginBottom="75dp"
+        android:layout_weight="0.84">
 
     </ListView>
 

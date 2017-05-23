@@ -1,6 +1,9 @@
 package com.example.tiagocardoso.eventool.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private Usuario usuario;
     private FirebaseAuth autenticacao;
+    private Boolean isConnected;
 
 
 
@@ -61,6 +65,15 @@ public class LoginActivity extends AppCompatActivity {
 
     //valida o login se as credenciais estao corretas
     public void validarLogin(){
+        ConnectivityManager conectivityManager = (ConnectivityManager) LoginActivity.this.getApplicationContext().getSystemService(
+                Context.CONNECTIVITY_SERVICE
+        );
+        NetworkInfo networkInfo = conectivityManager.getActiveNetworkInfo();
+        isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+        if (!isConnected){
+
+            Toast.makeText(LoginActivity.this, "Conecte-se a Internet", Toast.LENGTH_LONG).show();
+        }
 
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
         autenticacao.signInWithEmailAndPassword(

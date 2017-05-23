@@ -23,7 +23,7 @@ public class Listar_EventoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_evento2);
+        setContentView(R.layout.activity_lista_usuario);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarEvt);
         setSupportActionBar(toolbar);
@@ -52,7 +52,7 @@ public class Listar_EventoActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             HttpURLConnection urlConnection = null;
             try {
-                URL url = new URL("http://eventool.esy.es/selectEvento.php");
+                URL url = new URL("http://eventool.esy.es/selectAll.php");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setReadTimeout(10000);
                 urlConnection.setConnectTimeout(15000);

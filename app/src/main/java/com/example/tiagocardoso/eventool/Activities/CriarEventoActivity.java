@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Gallery;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class CriarEventoActivity extends AppCompatActivity{
     private TextView detalhesEvento;
     private Evento evento;
     private Boolean isSuccessful;
+    private Spinner categoria;
 
 
 
@@ -47,6 +49,7 @@ public class CriarEventoActivity extends AppCompatActivity{
         dataEvento = (TextView) findViewById(R.id.dataEventoID);
         horaEvento = (TextView) findViewById(R.id.horaEventoID);
         detalhesEvento = (TextView) findViewById(R.id.detalheEventoID);
+        categoria = (Spinner) findViewById(R.id.spinnerID);
 
         btn_criarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +59,7 @@ public class CriarEventoActivity extends AppCompatActivity{
                 evento.setDataEvento(dataEvento.getText().toString());
                 evento.setHoraEvento(horaEvento.getText().toString());
                 evento.setDetalhesEvento(detalhesEvento.getText().toString());
+                //evento.getCategoria(categoria.getTex().toString());
 
                 criarEvento();
 

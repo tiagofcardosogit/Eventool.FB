@@ -94,15 +94,15 @@
 
     <Button
         android:id="@+id/btn_Criar_Evento"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:background="@color/colorPrimary"
         android:onClick="criarEvento"
         android:text="CRIAR"
         android:textColor="@android:color/background_light"
+        android:layout_marginBottom="11dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/btn_imageEvtID" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/detalheEventoID"
@@ -114,5 +114,25 @@
         android:ems="10"
         android:hint="Detalhes do Evento"
         android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spinnerID"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/textView4"
+        android:spinnerMode="dialog"
+        android:entries="@array/categorias"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Categoria"
+        android:textSize="18sp"
+        android:layout_below="@+id/detalheEventoID"
+        android:layout_alignStart="@+id/imageView5"
+        android:layout_marginTop="22dp" />
 
 </RelativeLayout>

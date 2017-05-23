@@ -1,6 +1,8 @@
 package com.example.tiagocardoso.eventool.model;
 
 
+import com.example.tiagocardoso.eventool.Helper.Categoria;
+
 /**
  * Created by tiagocardoso on 15/04/17.
  */
@@ -15,6 +17,7 @@ public class Evento {
     private String horaEvento;
     private String nomelocal;
     private boolean ativo;
+    private Categoria categoria;
 
     public Evento(){
 
@@ -94,6 +97,14 @@ public class Evento {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
 

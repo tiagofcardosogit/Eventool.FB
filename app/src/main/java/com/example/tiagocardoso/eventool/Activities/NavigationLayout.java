@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.tiagocardoso.eventool.Adapter.TabAdapter;
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
+import com.example.tiagocardoso.eventool.Helper.SlidingTabLayout;
 import com.example.tiagocardoso.eventool.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,6 +25,8 @@ public class NavigationLayout extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
+    private SlidingTabLayout slidingTabLayout;
+    private ViewPager viewPager;
 
 
     @Override
@@ -30,6 +35,18 @@ public class NavigationLayout extends AppCompatActivity
         setContentView(R.layout.activity_main_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //instanciando as tabs
+        slidingTabLayout = (SlidingTabLayout) findViewById(R.id.stl_tabs);
+        viewPager = (ViewPager) findViewById(R.id.vp_pagina);
+
+        //Configurando Adapter
+        TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(tabAdapter);
+
+        slidingTabLayout.setViewPager(viewPager);
+        slidingTabLayout.setDistributeEvenly(true);//para alinhar as tabs no layout
+        slidingTabLayout.setSelectedIndicatorColors(ContextCompat.getColor(this,R.color.colorAccent));
 
 
         //floating button para criar o evento
@@ -136,6 +153,7 @@ public class NavigationLayout extends AppCompatActivity
         Intent intent = new Intent(NavigationLayout.this, CriarEventoActivity.class);
         startActivity(intent);
     }
+
 
 /*    public void selectMainOpetion(View view) {
         Intent intent = null;
