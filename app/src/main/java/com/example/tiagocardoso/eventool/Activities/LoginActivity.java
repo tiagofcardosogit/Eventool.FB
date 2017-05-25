@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
+import com.example.tiagocardoso.eventool.Helper.Base64Custom;
+import com.example.tiagocardoso.eventool.Helper.Preferencias;
 import com.example.tiagocardoso.eventool.R;
 import com.example.tiagocardoso.eventool.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -84,6 +86,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()){
+
+                    //salvar as preferencias do usuario no app
+                    Preferencias preferencias = new Preferencias(LoginActivity.this);
+                    String identifcadorUsuarioLogado = Base64Custom.encodeBase64(usuario.getEmail());
+                    preferencias.salvarDados(identifcadorUsuarioLogado);
+
                     Toast.makeText(LoginActivity.this, "Login com Sucesso", Toast.LENGTH_SHORT).show();
                     abrirTelaPrincipal();
                 }else{
@@ -118,11 +126,13 @@ public class LoginActivity extends AppCompatActivity {
     private void abrirTelaPrincipal(){
         Intent intent = new Intent(LoginActivity.this, NavigationLayout.class);
         startActivity(intent);
+        //finish();
     }
 
     public void abrirCriarUsuario(View view) {
         Intent intent = new Intent(LoginActivity.this, Criar_usuarioActivity.class);
         startActivity(intent);
+        finish();
 
     }
 

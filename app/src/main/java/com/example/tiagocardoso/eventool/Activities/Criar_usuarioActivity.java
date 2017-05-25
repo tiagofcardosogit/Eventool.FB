@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
+import com.example.tiagocardoso.eventool.Helper.Base64Custom;
+import com.example.tiagocardoso.eventool.Helper.Preferencias;
 import com.example.tiagocardoso.eventool.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -91,11 +93,19 @@ public class Criar_usuarioActivity extends AppCompatActivity {
 
 
                     FirebaseUser usuarioFirebase = task.getResult().getUser();
-                    usuario.setId(usuarioFirebase.getUid()); //grava o id gerado automaticamente pelo firebase
+                    String identificadorUsuario = Base64Custom.encodeBase64(usuario.getEmail());
+
+                    usuario.setId(identificadorUsuario); //grava o id gerado automaticamente pelo firebase
                     usuario.salvar();
 
-                    Intent intent = new Intent(Criar_usuarioActivity.this, NavigationLayout.class);
-                    startActivity(intent);
+                    //salvar as preferencias do usuario no app
+                    Preferencias preferencias = new Preferencias(Criar_usuarioActivity.this);
+                    preferencias.salvarDados(identificadorUsuario);
+
+                    abrirLoginUsuario();
+
+
+                    // finish();
 
                 }else{
 
@@ -118,6 +128,12 @@ public class Criar_usuarioActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void abrirLoginUsuario(){
+        Intent intent = new Intent(Criar_usuarioActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

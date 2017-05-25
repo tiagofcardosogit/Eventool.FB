@@ -1,5 +1,6 @@
 package com.example.tiagocardoso.eventool.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,17 +10,28 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.tiagocardoso.eventool.Adapter.TabAdapter;
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
+import com.example.tiagocardoso.eventool.Helper.Base64Custom;
+import com.example.tiagocardoso.eventool.Helper.Preferencias;
 import com.example.tiagocardoso.eventool.Helper.SlidingTabLayout;
 import com.example.tiagocardoso.eventool.R;
+import com.example.tiagocardoso.eventool.model.Contato;
+import com.example.tiagocardoso.eventool.model.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class NavigationLayout extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +39,8 @@ public class NavigationLayout extends AppCompatActivity
     private FirebaseAuth autenticacao;
     private SlidingTabLayout slidingTabLayout;
     private ViewPager viewPager;
+    private String idContato;
+    private DatabaseReference firebase;
 
 
     @Override
@@ -35,6 +49,8 @@ public class NavigationLayout extends AppCompatActivity
         setContentView(R.layout.activity_main_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        autenticacao = ConfigFirebase.getFirebaseAutenticacao();
 
         //instanciando as tabs
         slidingTabLayout = (SlidingTabLayout) findViewById(R.id.stl_tabs);
@@ -106,8 +122,10 @@ public class NavigationLayout extends AppCompatActivity
             case R.id.Pesquisar:
                 return true;
             case R.id.maps:
-                Intent intent = new Intent(NavigationLayout.this, MapsActivity.class);
-                startActivity(intent);
+                Intent troca = new Intent(NavigationLayout.this, MapsActivity.class);
+                startActivity(troca);
+            case R.id.add_pessoa:
+                adicionarNovoContato();
             default:
             return super.onOptionsItemSelected(item);
         }
@@ -118,7 +136,7 @@ public class NavigationLayout extends AppCompatActivity
         autenticacao.signOut();
         Intent intent = new Intent(NavigationLayout.this, MainActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
 
     }
 
@@ -152,6 +170,83 @@ public class NavigationLayout extends AppCompatActivity
     public void criarEventoScreen(View view){
         Intent intent = new Intent(NavigationLayout.this, CriarEventoActivity.class);
         startActivity(intent);
+    }
+
+    private void adicionarNovoContato(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(NavigationLayout.this);
+        alertDialog.setTitle("Novo Contato");
+        alertDialog.setMessage("Email do Contato");
+        alertDialog.setCancelable(false);
+
+        final EditText editText = new EditText(NavigationLayout.this);
+        alertDialog.setView(editText);
+
+
+        alertDialog.setPositiveButton("Cadastrar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                String emailContato = editText.getText().toString();
+
+                if (emailContato.isEmpty()){
+                    Toast.makeText(NavigationLayout.this, "Digite o email", Toast.LENGTH_SHORT).show();
+                }else{
+                    //verifica se usuario ja esta cadastrado na base
+                    idContato = Base64Custom.encodeBase64(emailContato);
+
+
+                    firebase = ConfigFirebase.getFirebase().child("usuarios").child(idContato);
+                    firebase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            if (dataSnapshot.getValue() != null){
+
+                                //recuperar dados do usuario a ser cadastrado
+                                Usuario usuarioContato = dataSnapshot.getValue(Usuario.class);
+
+
+                                //recuperar identificador do usuario logado
+                                Preferencias preferencias = new Preferencias(NavigationLayout.this);
+                                String identificadorUsuarioLogado = preferencias.getIdentificador();
+
+                                firebase = ConfigFirebase.getFirebase();
+                                firebase = firebase.child("contatos").child(identificadorUsuarioLogado).child(idContato);
+
+                                Contato contato = new Contato();
+                                contato.setIdentificadorUsuario(idContato);
+                                contato.setEmail(usuarioContato.getEmail());
+                                contato.setNome(usuarioContato.getNome());
+                                firebase.setValue(contato);
+
+                            }else {
+                                Toast.makeText(NavigationLayout.this, "Usuario nao Existe", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+                }
+
+
+            }
+        });
+        alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alertDialog.create();
+        alertDialog.show();
     }
 
 
