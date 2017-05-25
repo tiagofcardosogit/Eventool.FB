@@ -16,7 +16,7 @@ public class Preferencias {
     private final String CHAVE_IDENFICADOR = "identificadorUsuario";
 
 
-    public Preferencias( Context contextoParametro){
+    public Preferencias(Context contextoParametro){
 
         contexto = contextoParametro;
         preferences = contexto.getSharedPreferences(NOME_ARQUIVO, MODE );
