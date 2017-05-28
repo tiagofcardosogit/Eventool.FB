@@ -21,6 +21,8 @@ import com.example.tiagocardoso.eventool.model.Usuario;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class Criar_usuarioActivity extends AppCompatActivity {
 
@@ -32,6 +34,8 @@ public class Criar_usuarioActivity extends AppCompatActivity {
     private Button btnSalvar;
     private Usuario usuario;
     private FirebaseAuth autenticacao;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +100,11 @@ public class Criar_usuarioActivity extends AppCompatActivity {
                     usuario.setId(identificadorUsuario); //grava o id gerado automaticamente pelo firebase
                     usuario.salvar();
 
+
+
                     //salvar as preferencias do usuario no app
                     Preferencias preferencias = new Preferencias(Criar_usuarioActivity.this);
-                    preferencias.salvarDados(identificadorUsuario);
+                    preferencias.salvarDados(identificadorUsuario,usuario.getNome(),usuario.getSobrenome());
 
                     abrirLoginUsuario();
 

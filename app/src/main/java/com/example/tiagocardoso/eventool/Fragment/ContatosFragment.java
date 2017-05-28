@@ -1,15 +1,19 @@
 package com.example.tiagocardoso.eventool.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
+import com.example.tiagocardoso.eventool.Activities.ConversasActivity;
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
 import com.example.tiagocardoso.eventool.Helper.Preferencias;
 import com.example.tiagocardoso.eventool.R;
@@ -102,6 +106,26 @@ public class ContatosFragment extends Fragment {
 
             }
         };
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ConversasActivity.class);
+
+
+                //recupera os dados a serem passados
+                Contato contato = contatos.get(position);
+
+                //passando as mensagens para conversa activity
+                intent.putExtra("nome", contato.getNome());
+                intent.putExtra("email", contato.getEmail());
+
+
+                startActivity(intent);
+            }
+        });
+
 
         return view;
 
