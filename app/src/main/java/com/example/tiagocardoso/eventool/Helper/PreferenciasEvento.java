@@ -23,10 +23,14 @@ public class PreferenciasEvento {
 
 
 
+    public PreferenciasEvento(Context contextoParametro) {
+
+        contexto = contextoParametro;
+        preferences = contexto.getSharedPreferences(NOME_ARQUIVO, MODE);
+        editorEvento = preferences.edit();
 
 
-
-
+    }
 
 
     public void salvarDadosEventos( String identificadorEvento, String nomeEvento, String dataEvento, String horaEvento ){

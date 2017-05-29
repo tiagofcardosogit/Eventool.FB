@@ -49,6 +49,8 @@ public class EventoAdapter extends ArrayAdapter<Evento>{
 
             Evento evento = eventos.get(position);
             nomeEvento.setText( evento.getNomeEvento() );
+            horaEvento.setText(evento.getHoraEvento());
+            dataEvento.setText(evento.getDataEvento());
 
 
 

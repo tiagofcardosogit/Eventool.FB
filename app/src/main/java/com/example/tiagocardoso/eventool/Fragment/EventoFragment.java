@@ -12,6 +12,8 @@ import android.widget.ListView;
 
 import com.example.tiagocardoso.eventool.Adapter.EventoAdapter;
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
+import com.example.tiagocardoso.eventool.Helper.Preferencias;
+import com.example.tiagocardoso.eventool.Helper.PreferenciasEvento;
 import com.example.tiagocardoso.eventool.R;
 import com.example.tiagocardoso.eventool.model.Evento;
 import com.google.firebase.database.DataSnapshot;
@@ -21,18 +23,85 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class EventoFragment extends Fragment {
 
+/*
+    private ListView listView;
+    private ArrayAdapter adapter;
+    private ArrayList<String> eventos;
+
+    public EventoFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        eventos = new ArrayList<>();
+
+
+        View view = inflater.inflate(R.layout.fragment_evento,container,false);
+
+        listView = (ListView) view.findViewById(R.id.listViewEventoID);
+        adapter = new ArrayAdapter(
+                getActivity(),
+                android.R.layout.simple_expandable_list_item_1,
+                eventos
+        );
+
+        listView.setAdapter(adapter);
+
+
+        return view;
+    }
+
+
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private ListView listView;
     private ArrayAdapter adapter;
     private ArrayList<Evento> eventos;
     private DatabaseReference firebase;
     private ValueEventListener valueEventListenerEento;
-
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference eventoReferencia = databaseReference.child("Eventos");
 
 
     public EventoFragment() {
@@ -58,17 +127,10 @@ public class EventoFragment extends Fragment {
         listView.setAdapter(adapter);
 
 
+        PreferenciasEvento preferencias = new PreferenciasEvento(getActivity());
+        String idEvento = preferencias.getIdentificadorEvento();
 
-     /*   adapter = new ArrayAdapter(
-          getActivity(),
-                android.R.layout.simple_expandable_list_item_1,
-                eventos
-
-        );*/
-
-
-
-        firebase = ConfigFirebase.getFirebase().child("Eventos");
+        //firebase = ConfigFirebase.getFirebase().child("usuarios");
 
 
         valueEventListenerEento = new ValueEventListener() {
