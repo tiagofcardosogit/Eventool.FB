@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    //checa se o usuario esta logado
     private void userIsLogged(){ // Vefica se o usuario já esta logado
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
 

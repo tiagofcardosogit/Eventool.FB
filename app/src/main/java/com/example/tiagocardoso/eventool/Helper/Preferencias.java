@@ -13,20 +13,22 @@ public class Preferencias {
     private final int MODE = 0;
     private SharedPreferences.Editor editor;
 
+    //preferencias usuario
     private final String CHAVE_IDENFICADOR = "identificadorUsuario";
     private final String CHAVE_NOME = "nomeUsuarioLogado";
     private final String CHAVE_SOBRENOME = "sobrenomeUsuarioLogado";
 
 
-    public Preferencias(Context contextoParametro){
+    public Preferencias(Context contextoParametro) {
 
         contexto = contextoParametro;
-        preferences = contexto.getSharedPreferences(NOME_ARQUIVO, MODE );
+        preferences = contexto.getSharedPreferences(NOME_ARQUIVO, MODE);
         editor = preferences.edit();
+
 
     }
 
-    public void salvarDados( String identificadorUsuario, String nomeUsuario, String sobrenomeUsuario ){
+    public void salvarDados(String identificadorUsuario, String nomeUsuario, String sobrenomeUsuario) {
 
         editor.putString(CHAVE_IDENFICADOR, identificadorUsuario);
         editor.putString(CHAVE_NOME, nomeUsuario);
@@ -36,21 +38,23 @@ public class Preferencias {
 
     }
 
-    public String getIdentificador(){
+    public String getIdentificador() {
 
         return preferences.getString(CHAVE_IDENFICADOR, null);
     }
 
 
-    public String getSobrenome(){
+    public String getSobrenome() {
         return preferences.getString(CHAVE_SOBRENOME, null);
     }
 
 
-
-    public String getNome(){
+    public String getNome() {
         return preferences.getString(CHAVE_NOME, null);
     }
 
-
 }
+
+
+
+

@@ -67,7 +67,7 @@ public class ConversasActivity extends AppCompatActivity {
         //recuperando os dasdos do ContatosFragment
         Bundle extra = getIntent().getExtras();
 
-        if (extra != null){
+        if (extra != null) {
             nomeUsuarioDestinatario = extra.getString("nome");
             String emailDestinatario = extra.getString("email");
             idUsuarioDestinatario = Base64Custom.encodeBase64(emailDestinatario);
@@ -93,7 +93,7 @@ public class ConversasActivity extends AppCompatActivity {
 
 
                 //percorre pegando as mensagens nos filhos
-                for (DataSnapshot dados : dataSnapshot.getChildren()){
+                for (DataSnapshot dados : dataSnapshot.getChildren()) {
                     Mensagem mensagem = dados.getValue(Mensagem.class);
                     mensagens.add(mensagem);
                 }
@@ -118,9 +118,9 @@ public class ConversasActivity extends AppCompatActivity {
 
                 String textoMensagem = editMensagem.getText().toString();
 
-                if (textoMensagem.isEmpty()){
+                if (textoMensagem.isEmpty()) {
                     Toast.makeText(ConversasActivity.this, "Digite sua mensagem", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Mensagem mensagem = new Mensagem();
                     mensagem.setIdUsuario(idUsuarioRemetente);
                     mensagem.setMensagem(textoMensagem);
@@ -128,9 +128,9 @@ public class ConversasActivity extends AppCompatActivity {
 
                     Boolean retornoMensagemRemetente = salvarMensagem(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
 
-                    if (!retornoMensagemRemetente){
+                    if (!retornoMensagemRemetente) {
                         Toast.makeText(ConversasActivity.this, "Erroa ao salvar a mensagem, tente novamente", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         Boolean retornoMensagemDestinatario = salvarMensagem(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
                         if (!retornoMensagemDestinatario) {
                             Toast.makeText(ConversasActivity.this, "Erroa ao salvar a mensagem, tente novamente", Toast.LENGTH_SHORT).show();
@@ -144,11 +144,11 @@ public class ConversasActivity extends AppCompatActivity {
                     conversa.setNome(nomeUsuarioDestinatario);
                     conversa.setMensagem(textoMensagem);
 
-                    Boolean retornoConversaRemetente = salvarConversa(idUsuarioRemetente,idUsuarioDestinatario,conversa);
+                    Boolean retornoConversaRemetente = salvarConversa(idUsuarioRemetente, idUsuarioDestinatario, conversa);
 
-                    if (!retornoConversaRemetente){
+                    if (!retornoConversaRemetente) {
                         Toast.makeText(ConversasActivity.this, "Erro ao salvar a conversa, tente novamente!", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
 
                         //salvando conversa para o destinatario
                         conversa = new Conversa();
@@ -156,7 +156,7 @@ public class ConversasActivity extends AppCompatActivity {
                         conversa.setNome(nomeUsuarioRemetente);
                         conversa.setMensagem(textoMensagem);
 
-                        Boolean retornoConversaDestinatario = salvarConversa(idUsuarioDestinatario,idUsuarioRemetente,conversa);
+                        Boolean retornoConversaDestinatario = salvarConversa(idUsuarioDestinatario, idUsuarioRemetente, conversa);
 
                         if (!retornoConversaDestinatario) {
                             Toast.makeText(ConversasActivity.this, "Erroa ao salvar a mensagem, tente novamente", Toast.LENGTH_SHORT).show();
@@ -170,28 +170,29 @@ public class ConversasActivity extends AppCompatActivity {
         });
 
     }
+
     //metodo para salvar no firebase
-    private boolean salvarMensagem(String idRemetente, String idDestinatario, Mensagem mensagem){
-        try{
+    private boolean salvarMensagem(String idRemetente, String idDestinatario, Mensagem mensagem) {
+        try {
             firebase = ConfigFirebase.getFirebase().child("mensagens");
 
 
             firebase.child(idRemetente).child(idDestinatario).push().setValue(mensagem);
 
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
-
-    private boolean salvarConversa(String idRemetente, String idDestinatario, Conversa conversa){
-        try{
+    //metodo para salvar conversa
+    private boolean salvarConversa(String idRemetente, String idDestinatario, Conversa conversa) {
+        try {
             firebase = ConfigFirebase.getFirebase().child("conversas");
             firebase.child(idUsuarioRemetente).child(idUsuarioDestinatario).push().setValue(conversa);
 
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }

@@ -1,52 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:id="@+id/tv_nomeEvento"
+        android:text="Tiago Cardoso"
+        />
 
 
+    <TextView
+        android:id="@+id/tv_dataEvento"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:paddingBottom="8dp"
+        android:text="Tiago Cardoso"/>
 
-
-
-<ImageView
-    android:id="@+id/lista_evento_personalizada_imagemID"
-    android:layout_width="100dp"
-    android:layout_height="match_parent" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/lista_evento_personalizada_nomeID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Titulo"
-            android:textSize="30dp" />
-
-        <TextView
-            android:id="@+id/lista_evento_personalizada_horaID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HoraEvento"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/lista_evento_personalizada_dataID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DataEvento"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/lista_evento_personalizada_descricaoID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="descriçao"
-            android:textSize="20dp" />
-
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_horaEvento"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@color/colorAccent"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:paddingBottom="8dp"
+        android:text="Tiago Cardoso"/>
 
 </LinearLayout>

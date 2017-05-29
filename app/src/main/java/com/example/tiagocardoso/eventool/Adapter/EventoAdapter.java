@@ -1,9 +1,5 @@
 package com.example.tiagocardoso.eventool.Adapter;
 
-/**
- * Created by tiagocardoso on 27/05/17.
- */
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,20 +8,24 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.tiagocardoso.eventool.R;
-import com.example.tiagocardoso.eventool.model.Contato;
+
+import com.example.tiagocardoso.eventool.model.Evento;
 
 import java.util.ArrayList;
 
+/**
+ * Created by tiagocardoso on 28/05/17.
+ */
 
-public class ContatoAdapter extends ArrayAdapter<Contato> {
+public class EventoAdapter extends ArrayAdapter<Evento>{
 
-    private ArrayList<Contato> contatos;
+    private ArrayList<Evento> eventos;
     private Context context;
 
-    public ContatoAdapter(Context c, ArrayList<Contato> objects) {
+    public EventoAdapter(Context c, ArrayList<Evento> objects) {
         super(c, 0, objects);
-        this.contatos = objects;
         this.context = c;
+        this.eventos = objects;
     }
 
     @Override
@@ -33,28 +33,27 @@ public class ContatoAdapter extends ArrayAdapter<Contato> {
 
         View view = null;
 
-        // Verifica se a lista está vazia
-        if( contatos != null ){
+        // Verifica se a lista está preenchida
+        if( eventos != null ){
 
             // inicializar objeto para montagem da view
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
             // Monta view a partir do xml
-            view = inflater.inflate(R.layout.listview_customizado, parent, false);
+            view = inflater.inflate(R.layout.listview_eventos, parent, false);
 
             // recupera elemento para exibição
-            TextView nomeContato = (TextView) view.findViewById(R.id.tv_nome);
-            TextView emailContato = (TextView) view.findViewById(R.id.tv_email);
+            TextView nomeEvento = (TextView) view.findViewById(R.id.tv_nomeEvento);
+            TextView dataEvento = (TextView) view.findViewById(R.id.tv_dataEvento);
+            TextView horaEvento = (TextView) view.findViewById(R.id.tv_horaEvento);
 
-            Contato contato = contatos.get( position );
-            nomeContato.setText( contato.getNome());
-            emailContato.setText( contato.getEmail() );
+            Evento evento = eventos.get(position);
+            nomeEvento.setText( evento.getNomeEvento() );
+
+
 
         }
 
         return view;
-
     }
 }
-
-
