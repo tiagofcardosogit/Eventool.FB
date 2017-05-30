@@ -90,9 +90,9 @@ public class Util {
                 //int telefone = localObj.getInt("TELEFONE");
                 //novoEvento.setID_USUARIO(id);
                 novoEvento.setNomeEvento(nomeEvento);
-                novoEvento.setDetalhesEvento(detalheEvento);
+                /*novoEvento.setDetalhesEvento(detalheEvento);
                novoEvento.setNomelocal(localEvento);
-                novoEvento.setDataEvento(dataEvento);
+                novoEvento.setDataEvento(dataEvento);*/
                 //novoEvento.setHorarioevento(horaEvento);
                 //novoEvento.setCidade(cidade);
                 //novoEvento.setEstado(estado);

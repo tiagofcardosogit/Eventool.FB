@@ -1,149 +1,98 @@
 package com.example.tiagocardoso.eventool.Fragment;
 
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.tiagocardoso.eventool.Adapter.EventoAdapter;
+
+import com.example.tiagocardoso.eventool.Activities.ConversasActivity;
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
 import com.example.tiagocardoso.eventool.Helper.Preferencias;
-import com.example.tiagocardoso.eventool.Helper.PreferenciasEvento;
 import com.example.tiagocardoso.eventool.R;
-import com.example.tiagocardoso.eventool.model.Evento;
+import com.example.tiagocardoso.eventool.model.Contato;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.example.tiagocardoso.eventool.Adapter.ContatoAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class EventoFragment extends Fragment {
 
-/*
     private ListView listView;
     private ArrayAdapter adapter;
-    private ArrayList<String> eventos;
-
-    public EventoFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        eventos = new ArrayList<>();
-
-
-        View view = inflater.inflate(R.layout.fragment_evento,container,false);
-
-        listView = (ListView) view.findViewById(R.id.listViewEventoID);
-        adapter = new ArrayAdapter(
-                getActivity(),
-                android.R.layout.simple_expandable_list_item_1,
-                eventos
-        );
-
-        listView.setAdapter(adapter);
-
-
-        return view;
-    }
-
-
-}
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private ListView listView;
-    private ArrayAdapter adapter;
-    private ArrayList<Evento> eventos;
+    private ArrayList<Contato> contatos;
     private DatabaseReference firebase;
-    private ValueEventListener valueEventListenerEento;
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference eventoReferencia = databaseReference.child("Eventos");
-
+    private ValueEventListener valueEventListenerContatos;
 
     public EventoFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebase.addValueEventListener( valueEventListenerContatos );
+        Log.i("ValueEventListener", "onStart");
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public void onStop() {
+        super.onStop();
+        firebase.removeEventListener( valueEventListenerContatos );
+        Log.i("ValueEventListener", "onStop");
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
+        //Instânciar objetos
+        contatos = new ArrayList<>();
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_evento, container, false);
+        View view = inflater.inflate(R.layout.fragment_contatos, container, false);
 
-        eventos = new ArrayList<>();
+        //Monta listview e adapter
+        listView = (ListView) view.findViewById(R.id.lv_contatos);
 
-        //monta o listview adapter
-        listView = (ListView) view.findViewById(R.id.listViewEventoFragID);
-        adapter = new EventoAdapter(getActivity(), eventos);
-        listView.setAdapter(adapter);
+        adapter = new ContatoAdapter(getActivity(),contatos);
+        listView.setAdapter( adapter );
 
+        //Recuperar contatos do firebase
+        Preferencias preferencias = new Preferencias(getActivity());
+        String identificadorUsuarioLogado = preferencias.getIdentificador();
 
-        PreferenciasEvento preferencias = new PreferenciasEvento(getActivity());
-        String idEvento = preferencias.getIdentificadorEvento();
+        firebase = ConfigFirebase.getFirebase()
+                .child("contatos")
+                .child( identificadorUsuarioLogado );
 
-        //firebase = ConfigFirebase.getFirebase().child("usuarios");
-
-
-        valueEventListenerEento = new ValueEventListener() {
+        //Listener para recuperar contatos
+        valueEventListenerContatos = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                eventos.clear();
+                //Limpar lista
+                contatos.clear();
 
-                for (DataSnapshot dados : dataSnapshot.getChildren()){
-                    Evento evento = dados.getValue(Evento.class);
+                //Listar contatos
+                for (DataSnapshot dados: dataSnapshot.getChildren() ){
 
-                    eventos.add(evento);
+                    Contato contato = dados.getValue( Contato.class );
+                    contatos.add( contato );
+
+
                 }
+
                 adapter.notifyDataSetChanged();
 
             }
@@ -155,8 +104,31 @@ public class EventoFragment extends Fragment {
         };
 
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ConversasActivity.class);
+
+
+                //recupera os dados a serem passados
+                Contato contato = contatos.get(position);
+
+                //passando as mensagens para conversa activity
+                intent.putExtra("nome", contato.getNome());
+                intent.putExtra("email", contato.getEmail());
+
+
+                startActivity(intent);
+            }
+        });
+
 
         return view;
+
     }
 
 }
+
+
+
+

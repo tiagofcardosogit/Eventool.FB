@@ -39,9 +39,9 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
         if(evento != null){
             //TextView eventoID = (TextView) localView.findViewById(R.id.eventoID);
             TextView noveEvento = (TextView) localView.findViewById(R.id.nomeEvento);
-            TextView descricaoEvento = (TextView) localView.findViewById(R.id.descricaoEvento);
+          /*  TextView descricaoEvento = (TextView) localView.findViewById(R.id.descricaoEvento);
             TextView localEvento = (TextView) localView.findViewById(R.id.localEvento);
-            TextView dataEvento = (TextView) localView.findViewById(R.id.dataEvento);
+            TextView dataEvento = (TextView) localView.findViewById(R.id.dataEvento);*/
             //TextView horaEvento = (TextView) localView.findViewById(R.id.horaEvento);
             //TextView cidade = (TextView) localView.findViewById(R.id.cidade);
             //TextView estado = (TextView) localView.findViewById(R.id.estado);
@@ -53,7 +53,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
             if(noveEvento != null){
                 noveEvento.setText(evento.getNomeEvento());
             }
-            if(descricaoEvento != null){
+      /*      if(descricaoEvento != null){
                 descricaoEvento.setText(evento.getDetalhesEvento());
             }
             if (localEvento != null){
@@ -61,7 +61,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
             }
             if(dataEvento != null){
                 dataEvento.setText(String.valueOf(evento.getDataEvento()));
-            }
+            }*/
             /*if(horaEvento != null){
                 horaEvento.setText(String.valueOf(evento.getHorarioevento()));
             }

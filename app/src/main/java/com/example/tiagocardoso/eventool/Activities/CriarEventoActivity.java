@@ -71,7 +71,7 @@ public class CriarEventoActivity extends AppCompatActivity{
 
     private void criarEvento(){
 
-        databaseReference.child("Eventos").push().setValue(evento);
+        databaseReference.child("eventos").push().setValue(evento);
 
             Toast.makeText(CriarEventoActivity.this, "Evento Criado!!\nHave Fun!!!", Toast.LENGTH_SHORT).show();
 
