@@ -2,15 +2,9 @@ package com.example.tiagocardoso.eventool.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.tiagocardoso.eventool.Helper.EventoAdapter;
-import com.example.tiagocardoso.eventool.Helper.Util;
 import com.example.tiagocardoso.eventool.R;
-import com.example.tiagocardoso.eventool.model.Evento;
-
-import java.util.List;
 
 public class ListaEventosActivity extends Activity {
 
@@ -19,7 +13,7 @@ public class ListaEventosActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_eventos);
+        setContentView(R.layout.eventos_activity_listview);
 
        /* listViewEventos = (ListView) findViewById(R.id.listViewEventoID);
 

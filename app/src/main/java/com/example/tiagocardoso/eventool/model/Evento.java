@@ -9,46 +9,33 @@ import com.example.tiagocardoso.eventool.Helper.Categoria;
 
 public class Evento {
 
-    private String id;
-    private String id_usuario;
+    private String idEvento;
     private String nomeEvento;
     private String detalhesEvento;
     private String dataEvento;
     private String horaEvento;
-    private String nomelocal;
-    private boolean ativo;
-    private Categoria categoria;
+
 
     public Evento(){
 
     }
 
 
-    public Evento(String id, String nomeEvento, String detalhesEvento, String nomelocal, String dataEvento, String horarioevento, String horaEvento) {
-        this.id = id;
+    public Evento(String id, String nomeEvento, String detalhesEvento,  String dataEvento, String horarioevento, String horaEvento) {
+        this.idEvento = idEvento;
         this.nomeEvento = nomeEvento;
         this.detalhesEvento = detalhesEvento;
-        this.nomelocal = nomelocal;
         this.dataEvento = dataEvento;
         this.horaEvento= horaEvento;
 
     }
 
-
-    public String getId() {
-        return id;
+    public String getIdEvento() {
+        return idEvento;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(String id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdEvento(String idEvento) {
+        this.idEvento = idEvento;
     }
 
     public String getNomeEvento() {
@@ -81,30 +68,6 @@ public class Evento {
 
     public void setHoraEvento(String horaEvento) {
         this.horaEvento = horaEvento;
-    }
-
-    public String getNomelocal() {
-        return nomelocal;
-    }
-
-    public void setNomelocal(String nomelocal) {
-        this.nomelocal = nomelocal;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 }
 

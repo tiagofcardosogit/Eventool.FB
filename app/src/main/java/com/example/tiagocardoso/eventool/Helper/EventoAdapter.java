@@ -56,9 +56,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
             if(descricaoEvento != null){
                 descricaoEvento.setText(evento.getDetalhesEvento());
             }
-            if (localEvento != null){
-                localEvento.setText(evento.getNomelocal());
-            }
+
             if(dataEvento != null){
                 dataEvento.setText(String.valueOf(evento.getDataEvento()));
             }

@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.tiagocardoso.eventool.Fragment.ContatosFragment;
 import com.example.tiagocardoso.eventool.Fragment.ConversasFragment;
-import com.example.tiagocardoso.eventool.Fragment.EventoFragment;
 
 /**
  * Created by tiagocardoso on 23/05/17.
@@ -14,7 +13,7 @@ import com.example.tiagocardoso.eventool.Fragment.EventoFragment;
 
 public class TabAdapter extends FragmentStatePagerAdapter {
 
-    private String[] tituloAbas = {"Eventos", "Conversas", "Contatos"};
+    private String[] tituloAbas = {"Conversas", "Contatos"};
 
     public TabAdapter(FragmentManager fm) {
         super(fm);
@@ -26,12 +25,9 @@ public class TabAdapter extends FragmentStatePagerAdapter {
         //chama o fragment de acordo com a escolha da tab
         switch (position){
             case 0:
-                fragment = new EventoFragment();
-                break;
-            case 1:
                 fragment = new ConversasFragment();
                 break;
-            case 2:
+            case 1:
                 fragment = new ContatosFragment();
                 break;
         }
