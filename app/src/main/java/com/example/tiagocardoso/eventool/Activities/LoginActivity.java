@@ -129,15 +129,15 @@ public class LoginActivity extends AppCompatActivity {
                     try{
                         throw task.getException();
                     } catch (FirebaseAuthInvalidUserException e) { //metodo para lancar excecao quando o usuario esta errado
-                        erroExcecao = "Falha ao Realizar o Login";
+                        erroExcecao = "Falha ao Realizar o Login verifique seu email e senha";
 
                     }catch (FirebaseAuthInvalidCredentialsException e){ //metodo para lancar excecao quando e email é invalido
-                        erroExcecao = "Email inválido, digite novamente!";
+                        erroExcecao = "Email ou senha inválido tenta novamente";
                     }catch (Exception e){
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(LoginActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, ""+ erroExcecao, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void abrirTelaPrincipal(){
-        Intent intent = new Intent(LoginActivity.this, NavigationLayout.class);
+        Intent intent = new Intent(LoginActivity.this, ListaEventosActivity.class);
         startActivity(intent);
         //finish();
     }

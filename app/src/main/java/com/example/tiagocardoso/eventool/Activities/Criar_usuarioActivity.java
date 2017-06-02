@@ -121,7 +121,7 @@ public class Criar_usuarioActivity extends AppCompatActivity {
                         erroExcecao = "Email já cadastrado para outro usuario!";
 
                     }catch (FirebaseAuthInvalidCredentialsException e){ //metodo para lancar excecao quando e email é invalido
-                        erroExcecao = "Email inválido, digite novamente!";
+                        erroExcecao = "Email ou senha iválidos, dá uma olhada e tenta novamente";
                     }catch (Exception e){
                         e.printStackTrace();
                     }
