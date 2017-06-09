@@ -15,7 +15,6 @@
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
         android:id="@+id/tv_nomeEvento"
-        android:text="Tiago Cardoso"
         />
 
 
@@ -28,8 +27,7 @@
         android:textStyle="italic"
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
-        android:paddingBottom="8dp"
-        android:text="Tiago Cardoso"/>
+        android:paddingBottom="8dp" />
 
     <TextView
         android:id="@+id/tv_horaEvento"
@@ -40,7 +38,6 @@
         android:textStyle="italic"
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
-        android:paddingBottom="8dp"
-        android:text="Tiago Cardoso"/>
+        android:paddingBottom="8dp"/>
 
 </LinearLayout>

@@ -21,8 +21,8 @@ public class Evento {
     }
 
 
-    public Evento(String id, String nomeEvento, String detalhesEvento,  String dataEvento, String horarioevento, String horaEvento) {
-        this.idEvento = idEvento;
+    public Evento( String nomeEvento, String detalhesEvento,  String dataEvento, String horaEvento) {
+
         this.nomeEvento = nomeEvento;
         this.detalhesEvento = detalhesEvento;
         this.dataEvento = dataEvento;
@@ -30,13 +30,6 @@ public class Evento {
 
     }
 
-    public String getIdEvento() {
-        return idEvento;
-    }
-
-    public void setIdEvento(String idEvento) {
-        this.idEvento = idEvento;
-    }
 
     public String getNomeEvento() {
         return nomeEvento;

@@ -45,11 +45,11 @@ public class EventoAdapter extends ArrayAdapter<Evento>{
             // recupera elemento para exibição
             TextView nomeEvento = (TextView) view.findViewById(R.id.tv_nomeEvento);
             TextView dataEvento = (TextView) view.findViewById(R.id.tv_dataEvento);
-            TextView horaEvento = (TextView) view.findViewById(R.id.tv_horaEvento);
+            //TextView horaEvento = (TextView) view.findViewById(R.id.tv_horaEvento);
 
             Evento evento = eventos.get(position);
             nomeEvento.setText( evento.getNomeEvento() );
-            horaEvento.setText(evento.getHoraEvento());
+            //horaEvento.setText(evento.getHoraEvento());
             dataEvento.setText(evento.getDataEvento());
 
 

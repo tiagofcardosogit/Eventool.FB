@@ -7,20 +7,24 @@
     <TextView
         android:id="@+id/nomeEvento"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Tiago"/>
     <TextView
         android:id="@+id/descricaoEvento"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Tiago"/>
     <TextView
-        android:id="@+id/localEvento"
+        android:id="@+id/horaEvento"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Tiago"/>
 
     <TextView
         android:id="@+id/dataEvento"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Tiago"/>
 
 
 </LinearLayout>
