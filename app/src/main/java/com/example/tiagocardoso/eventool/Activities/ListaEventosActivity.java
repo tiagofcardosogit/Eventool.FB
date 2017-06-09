@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import com.example.tiagocardoso.eventool.Adapter.AdapterListaEvento;
 import com.example.tiagocardoso.eventool.R;
 import com.example.tiagocardoso.eventool.model.Evento;
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.android.gms.maps.MapView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,55 +29,40 @@ import java.util.List;
 
 public class ListaEventosActivity extends Activity {
 
-    private ListView listView;
-    private ArrayAdapter adapter;
-    private ArrayList<String> arrayList;
+    private ImageView btnImageShare;
+    private TextView nomeEvento;
+    private TextView detalhesEvento;
+    private TextView horaEvento;
+    private TextView dataEvento;
+    private MapView mapView;
 
-    final List<Evento> eventos = new  ArrayList<Evento>();
-
-
-     @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-         super.onCreate(savedInstanceState);
-         setContentView(R.layout.eventos_activity_listview);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.eventos_activity_listview);
 
-       DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-       DatabaseReference firebase = databaseReference;
-
-         ListView listview = (ListView) findViewById(R.id.listViewEventoID);
-
-         ArrayAdapter<Evento> eventoAdapter = new ArrayAdapter<Evento>(
-                 ListaEventosActivity.this,
-                 android.R.layout.simple_expandable_list_item_1,
-                 android.R.id.text1,
-                 eventos
-         );
-
-        // listview.setAdapter(eventoAdapter);
+        btnImageShare = (ImageButton) findViewById(R.id.btnImageShareID);
+        nomeEvento = (TextView) findViewById(R.id.textViewNomeEventoID);
+        detalhesEvento = (TextView) findViewById(R.id.textViewDetalhesID);
+        horaEvento = (TextView) findViewById(R.id.textViewHoraID);
+        dataEvento = (TextView) findViewById(R.id.texViewtDataID);
 
 
 
-         firebase.child("eventos").addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(DataSnapshot dataSnapshot) {
-                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                 for (DataSnapshot child: children) {
-                     Evento evento = child.getValue(Evento.class);
-                     eventos.add(evento);
-                 }
+        //recuperando os dasdos do ContatosFragment
+        Bundle extra = getIntent().getExtras();
 
-                 adapter.notifyDataSetChanged();
-             }
+        if (extra != null) {
+            String nomeEventoPassado = extra.getString("nomeEvento");
+            nomeEvento.setText(nomeEventoPassado);
+            String detalhePassado = extra.getString("detalheEvento");
+            detalhesEvento.setText(detalhePassado);
+            String dataPassada = extra.getString("dataEvento");
+            dataEvento.setText(dataPassada);
+            String horaPassada = extra.getString("horaEvento");
+            horaEvento.setText(horaPassada);
 
-             @Override
-             public void onCancelled(DatabaseError databaseError) {
-                 Log.i("ERROR", databaseError.getMessage());
-
-             }
-         });
-
-
-
+        }
 
 
     }

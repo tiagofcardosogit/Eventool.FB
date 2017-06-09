@@ -1,15 +1,18 @@
 package com.example.tiagocardoso.eventool.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.tiagocardoso.eventool.Activities.ListaEventosActivity;
 import com.example.tiagocardoso.eventool.Adapter.ConversaAdapter;
 import com.example.tiagocardoso.eventool.Adapter.EventoAdapter;
 import com.example.tiagocardoso.eventool.Config.ConfigFirebase;
@@ -87,28 +90,36 @@ public class EventosFragment extends Fragment {
         });
 
 
- /*       valueEventListenerConversas = new ValueEventListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ListaEventosActivity.class);
 
-                eventos.clear();
-                for ( DataSnapshot dados: dataSnapshot.getChildren() ){
-                    Evento evento = dados.getValue( Evento.class );
-                    eventos.add(evento);
-                }
-                adapter.notifyDataSetChanged();
 
+                //recupera os dados a serem passados
+                Evento evento = eventos.get(position);
+
+                //passando as mensagens para conversa activity
+                intent.putExtra("nomeEvento", evento.getNomeEvento());
+                intent.putExtra("detalheEvento", evento.getDetalhesEvento());
+                intent.putExtra("dataEvento", evento.getDataEvento());
+                intent.putExtra("horaEvento", evento.getHoraEvento());
+                startActivity(intent);
             }
+        });
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        return  view;
 
-            }
-        };
-*/
-        return view;
+
+
+
 
     }
+
+
 }
+
+
+
 
 
