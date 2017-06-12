@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.tiagocardoso.eventool.Adapter.TabAdapter;
@@ -33,6 +34,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.support.v4.content.ContextCompat.startActivity;
+
 public class NavigationLayout extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -41,6 +44,8 @@ public class NavigationLayout extends AppCompatActivity
     private ViewPager viewPager;
     private String idContato;
     private DatabaseReference firebase;
+    private ListaEventosActivity listaEventosActivity;
+    private ImageView share;
 
 
     @Override
@@ -51,6 +56,9 @@ public class NavigationLayout extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
+
+
+       // share = (ImageView) findViewById(R.id.sharebtnID);
 
         //instanciando as tabs
         slidingTabLayout = (SlidingTabLayout) findViewById(R.id.stl_tabs);
@@ -155,6 +163,15 @@ public class NavigationLayout extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
+
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "texto");
+                shareIntent.setType("text/plain");
+                //shareIntent.setPackage("com.whatsapp");
+                startActivity(shareIntent);
+
+
 
         } else if (id == R.id.nav_send) {
 
@@ -265,4 +282,7 @@ public class NavigationLayout extends AppCompatActivity
         if (intent != null) {
             startActivity(intent);
         }*/
+
+
+
     }

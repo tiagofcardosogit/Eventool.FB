@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {  //cadastrar usuario
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {  //nao usa pra nada
             @Override
             public void onClick(View v) {
                 //mandar para tela de cadastro

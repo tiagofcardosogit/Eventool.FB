@@ -8,15 +8,15 @@
 
     <TextView
         android:id="@+id/textViewNomeEventoID"
-        android:layout_width="370dp"
+        android:layout_width="296dp"
         android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView10"
         android:layout_marginTop="21dp"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView10" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewDetalhesID"
