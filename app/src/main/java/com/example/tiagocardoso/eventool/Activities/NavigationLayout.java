@@ -166,7 +166,7 @@ public class NavigationLayout extends AppCompatActivity
 
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Baixe o Eventool: https://drive.google.com/file/d/0B0bOE1UY3_s4TGNhTjJlcnY0NjA/view?usp=sharing");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Baixe o Eventool: https://drive.google.com/file/d/0B0bOE1UY3_s4SXU1Tmd4TjVJbHc/view?usp=sharing");
                 shareIntent.setType("text/plain");
                 //shareIntent.setPackage("com.whatsapp");
                 startActivity(shareIntent);
