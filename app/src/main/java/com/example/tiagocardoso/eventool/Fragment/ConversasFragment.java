@@ -53,7 +53,7 @@ public class ConversasFragment extends Fragment {
 
         // Monta listview e adapter
         conversas = new ArrayList<>();
-        listView = (ListView) view.findViewById(R.id.lv_conversas);
+        listView = (ListView) view.findViewById(R.id.lv_conversas_1);
         adapter = new ConversaAdapter(getActivity(), conversas );
         listView.setAdapter( adapter );
 

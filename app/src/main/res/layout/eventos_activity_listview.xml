@@ -8,64 +8,47 @@
 
     <TextView
         android:id="@+id/textViewNomeEventoID"
-        android:layout_width="380dp"
-        android:layout_height="60dp"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
         android:layout_marginTop="21dp"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView12" />
+        android:layout_alignStart="@+id/textView10" />
 
     <TextView
         android:id="@+id/textViewDetalhesID"
-        android:layout_width="380dp"
-        android:layout_height="60dp"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp"
-        android:textStyle="italic"
+        android:layout_width="360dp"
+        android:layout_height="150dp"
+        android:layout_alignEnd="@+id/textView12"
         android:layout_below="@+id/textView12"
-        android:layout_alignStart="@+id/textView12" />
+        android:layout_marginTop="12dp"
+        android:textAlignment="gravity"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/textViewHoraID"
         android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignBaseline="@+id/texViewtDataID"
-        android:layout_alignBottom="@+id/texViewtDataID"
-        android:layout_alignStart="@+id/btnImageShareID"
-        android:layout_marginStart="16dp"
-        android:textColor="@color/colorAccent" />
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/textView14"
+        android:layout_below="@+id/texViewtDataID"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/texViewtDataID"
         android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignStart="@+id/textView14"
-        android:layout_below="@+id/textView14"
-        android:layout_marginTop="13dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/textViewHoraID"
+        android:layout_alignTop="@+id/textView14"
+        android:layout_marginTop="23dp"
         android:textColor="@color/colorAccent"
+        android:textSize="18sp"
         android:textStyle="italic" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapViewID"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/textViewHoraID"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:id="@+id/btnImageShareID"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="?android:attr/detailsElementBackground"
-        app:srcCompat="@drawable/ic_menu_share"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/mapViewID"
-        android:layout_marginBottom="13dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -79,23 +62,27 @@
         android:id="@+id/textView12"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="24dp"
         android:text="Detalhes"
+        android:textAlignment="center"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:layout_below="@+id/textViewNomeEventoID"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewDetalhesID"
+        android:layout_alignEnd="@+id/textViewDetalhesID"
         android:layout_below="@+id/textViewDetalhesID"
-        android:layout_marginTop="13dp"
-        android:text="Data de inicio"
-        android:textColor="@color/colorAccent" />
+        android:layout_marginTop="26dp"
+        android:text=" Qando?"
+        android:textAlignment="inherit"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

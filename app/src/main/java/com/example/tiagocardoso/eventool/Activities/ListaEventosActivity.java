@@ -41,7 +41,7 @@ public class ListaEventosActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eventos_activity_listview);
 
-        btnImageShare = (ImageButton) findViewById(R.id.btnImageShareID);
+        //btnImageShare = (ImageButton) findViewById(R.id.btnImageShareID);
         nomeEvento = (TextView) findViewById(R.id.textViewNomeEventoID);
         detalhesEvento = (TextView) findViewById(R.id.textViewDetalhesID);
         horaEvento = (TextView) findViewById(R.id.textViewHoraID);
